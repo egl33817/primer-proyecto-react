@@ -23,9 +23,7 @@ const DetalleCripto = () => {
         .catch(
             (error) => console.log("La petición falló. Error: " + error)
         )
-    }, [])
 
-    useEffect(() => {
         fetch(`${API_URL}assets/${parametros.id}/history?interval=d1`, {
                 method: "GET",
                 headers: {
