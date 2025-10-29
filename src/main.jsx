@@ -8,8 +8,8 @@ import Menu from './components/menu/Menu.jsx'
 
 createRoot(document.getElementById('root')).render(
     <>
-        <Menu />
         <BrowserRouter>
+            <Menu />
             <Routes>
                 <Route path="/" element={<App />} />
                 <Route path="/saludo" element={<Saludo />} />
