@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useEffect } from "react"
 import axios from "axios"
-import Cripto from "./Cripto"
+import Cripto from "./cripto/Cripto"
 import "./App.css"
 
 function App() {
