@@ -38,16 +38,47 @@ const DetalleCripto = () => {
     }, [])
 
     return (
-        <>
-            <h1>Detalle de la criptomoneda {parametros.id}</h1>
+        <div className="cripto-page-container">
+
             <div className="info">
-                <ul>
-                    <li><span className="label">Nombre: </span>{datosMoneda.name}</li>
-                    <li><span className="label">Símbolo: </span>{datosMoneda.symbol}</li>
-                    <li><span className="label">Precio USD: </span>{parseFloat(datosMoneda.priceUsd).toFixed(3)}</li>
-                    <li><span className="label">Variación 24h: </span>{parseFloat(datosMoneda.changePercent24Hr).toFixed(2)}</li>
-                </ul>
-                <h2>Valor histórico de {parametros.id}</h2>
+
+                <div className="main-info">
+                    <span>Ranking: {datosMoneda.rank}</span>
+                    <h1>{datosMoneda.name}</h1>
+                    <span className="symbol">{datosMoneda.symbol}</span>
+                </div>
+
+                <div className="details">
+                    <ul>
+                        <li className="detail">
+                            <span className="label">Precio (USD): </span>
+                            <span>{parseFloat(datosMoneda.priceUsd).toFixed(3)}</span>
+                        </li>
+                        <li className="detail">
+                            <span className="label">MaxSupply: </span>
+                            <span>{parseFloat(datosMoneda.maxSupply).toFixed(3)}</span>
+                        </li>
+                        <li className="detail">
+                            <span className="label">Market Cap (USD): </span>
+                            <span>{parseFloat(datosMoneda.marketCapUsd).toFixed(3)}</span>
+                        </li>
+                        <li className="detail">
+                            <span className="label">Volumen (USD - 24h): </span>
+                            <span>{parseFloat(datosMoneda.volumeUsd24Hr).toFixed(3)}</span>
+                        </li>
+                        <li className="detail">
+                            <span className="label">Variación (24h): </span>
+                            <span>{parseFloat(datosMoneda.changePercent24Hr).toFixed(3)}</span>
+                        </li>
+                        <li className="detail">
+                            <span className="label">Vwap (24h): </span>
+                            <span>{parseFloat(datosMoneda.vwap24Hr).toFixed(3)}</span>
+                        </li>
+                    </ul>
+                </div> 
+            </div>
+
+            <div className="history">
                 <table className="history">
                     <thead>
                         <tr>
@@ -58,15 +89,15 @@ const DetalleCripto = () => {
                     <tbody>
                         {datosHistoricos.map(({date, priceUsd, time}) => 
                             <tr key={time}>
-                                <td>{date}</td>
-                                <td>{parseFloat(priceUsd).toFixed(3)}</td>
+                                <td className="label">{new Date(date).toDateString()}</td>
+                                <td className="price">{parseFloat(priceUsd).toFixed(3)}</td>
                             </tr>
                         )}
                     </tbody>
                 </table>
                 <Link to="/criptomonedas">Volver...</Link>
             </div>
-        </>
+        </div>
     )
 }
 
