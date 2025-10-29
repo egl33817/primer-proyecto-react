@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')).render(
                 </Route>
                 <Route path="/criptomonedas" element={<App />}>
                     <Route index element={<Cuadricula />} />
-                    <Route path=":codigo" element={<DetalleCripto />} />
+                    <Route path=":id" element={<DetalleCripto />} />
                 </Route>
                 <Route path="*" element={<Pagina404 />} />
             </Routes>
