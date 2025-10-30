@@ -14,10 +14,14 @@ const DetalleCripto = () => {
     return (
 
         <div className="cripto-page-container">
-            <CriptoInfo datosMoneda={datosMoneda} />
-            <CriptoHistorial datosHistoricos={datosHistoricos} />
+            {
+                datosMoneda && <CriptoInfo datosMoneda={datosMoneda} />
+            }
+            {
+                datosHistoricos && <CriptoHistorial datosHistoricos={datosHistoricos} />
+            }
         </div>
-        
+
     )
 }
 
