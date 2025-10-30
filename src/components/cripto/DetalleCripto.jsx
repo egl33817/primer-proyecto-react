@@ -12,10 +12,12 @@ const DetalleCripto = () => {
     const datosHistoricos = usePetition(`${parametros.id}/history?interval=d1`)
 
     return (
+
         <div className="cripto-page-container">
             <CriptoInfo datosMoneda={datosMoneda} />
             <CriptoHistorial datosHistoricos={datosHistoricos} />
         </div>
+        
     )
 }
 
