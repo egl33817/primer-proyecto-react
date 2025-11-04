@@ -1,18 +1,12 @@
-import { useState, useEffect } from "react"
+import { useContext } from "react"
+import { UserContext } from "../../contexts/UserContext"
 import { NavLink } from "react-router-dom"
 import "./Menu.css"
 
 const Menu = () => {
-
-    const [usuario, setUsuario] = useState({})
-
-    useEffect(() => {
-        setUsuario({
-            nombre: "Robertiño",
-            fechaRegistro: "04/11/2025"
-        })
-    }, [])
     
+    const usuario = useContext(UserContext)
+
     return (
         <nav className="main-menu">
             <ul>
