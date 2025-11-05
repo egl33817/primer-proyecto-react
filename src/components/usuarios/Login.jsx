@@ -1,7 +1,15 @@
 import { useState } from "react"
+import { useNavigate, Navigate } from "react-router-dom"
 import "./Login.css"
 
 const Login = () => {
+
+    const navegación = useNavigate()
+
+    const [usuario, setUsuario] = useState({
+        email: "",
+        password: ""
+    })
 
     const iniciarSesión = (e) => {
         
@@ -21,6 +29,7 @@ const Login = () => {
         .then((data) => {
             console.log(data)
             localStorage.setItem("tokenCriptoMarket", data.token)
+            navegación("/")
         }       
         )
         .catch(
@@ -29,10 +38,7 @@ const Login = () => {
 
     }
 
-    const [usuario, setUsuario] = useState({
-        email: "",
-        password: ""
-    })
+    if (localStorage.getItem("tokenCriptoMarket")) return <Navigate to="/" />
 
     return (
         <div className="login-container">
