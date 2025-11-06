@@ -12,11 +12,13 @@ const Login = () => {
     })
 
     const [cargando, setCargando] = useState(false)
+    const [error, setError] = useState()
 
     const iniciarSesión = (e) => {
         
         e.preventDefault()
         setCargando(true)
+        setError(null)
         console.log(usuario)
 
         fetch("https://reqres.in/api/login", {
@@ -40,6 +42,7 @@ const Login = () => {
             (error) => {
                 setCargando(false)
                 console.log("La petición falló. Error: " + error)
+                setError(error)
             }
         )
 
@@ -65,6 +68,9 @@ const Login = () => {
                     <input type="submit" value={cargando ? "Cargando..." : "Iniciar sesión"} />
                 </div>
             </form>
+            {
+                error && <div className="error">{JSON.stringify(error)}</div>
+            }
         </div>
     )
 
