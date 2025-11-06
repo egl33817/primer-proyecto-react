@@ -38,3 +38,14 @@
   padding: 0.25rem 2rem;
   border-radius: .25rem;
 }
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: white;
+  border: none;
+  color: darkblue;
+  padding: 1rem;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}

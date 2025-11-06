@@ -11,9 +11,12 @@ const Login = () => {
         password: ""
     })
 
+    const [cargando, setCargando] = useState(false)
+
     const iniciarSesión = (e) => {
         
         e.preventDefault()
+        setCargando(true)
         console.log(usuario)
 
         fetch("https://reqres.in/api/login", {
@@ -27,13 +30,17 @@ const Login = () => {
         )
         .then((respuesta) => respuesta.json())
         .then((data) => {
+            setCargando(false)
             console.log(data)
             localStorage.setItem("tokenCriptoMarket", data.token)
             navegación("/")
         }       
         )
         .catch(
-            (error) => console.log("La petición falló. Error: " + error)
+            (error) => {
+                setCargando(false)
+                console.log("La petición falló. Error: " + error)
+            }
         )
 
     }
@@ -55,7 +62,7 @@ const Login = () => {
                             type="password" name="password" />
                 </div>
                 <div className="submit">
-                    <input type="submit" value="Iniciar sesión" />
+                    <input type="submit" value={cargando ? "Cargando..." : "Iniciar sesión"} />
                 </div>
             </form>
         </div>
